@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem\\person\\controls\\ctrlpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|solutionrelative:person\\controls\\ctrlpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem\\person\\controls\\ctrlpersoninfo.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|solutionrelative:person\\controls\\ctrlpersoninfo.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7C1796-A669-412F-9687-A92F930B84FA}|..\\LibraryManagementSystem_Business\\LibraryManagementSystem_Business.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem_business\\clsperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem\\person\\controls\\ctrlpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|solutionrelative:person\\controls\\ctrlpersoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7C1796-A669-412F-9687-A92F930B84FA}|..\\LibraryManagementSystem_Business\\LibraryManagementSystem_Business.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem_business\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD6B7EB9-FA97-45F2-A2B4-D8C5B152E16A}|..\\LibraryManagementSystem_DataAccess\\LibraryManagementSystem_DataAccess.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem_dataaccess\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|f:\\programming_by_mhmd\\librarymanagementsystem\\librarymanagementsystem\\librarymanagementsystem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C9CA37E7-429C-467B-BDC5-FE2EF033C538}|LibraryManagementSystem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ctrlPersonInfo.Designer.cs",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.Designer.cs",
+              "RelativeDocumentMoniker": "Person\\Controls\\ctrlPersonInfo.Designer.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.Designer.cs",
+              "RelativeToolTip": "Person\\Controls\\ctrlPersonInfo.Designer.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAiwKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:37:00.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ctrlPersonInfo.cs",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.cs",
+              "RelativeDocumentMoniker": "Person\\Controls\\ctrlPersonInfo.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.cs",
+              "RelativeToolTip": "Person\\Controls\\ctrlPersonInfo.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADgvxMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:36:48.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsPerson.cs",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_Business\\clsPerson.cs",
+              "RelativeDocumentMoniker": "..\\LibraryManagementSystem_Business\\clsPerson.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_Business\\clsPerson.cs",
+              "RelativeToolTip": "..\\LibraryManagementSystem_Business\\clsPerson.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:31:59.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ctrlPersonInfo.cs [Design]",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.cs",
+              "RelativeDocumentMoniker": "Person\\Controls\\ctrlPersonInfo.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Person\\Controls\\ctrlPersonInfo.cs [Design]",
+              "RelativeToolTip": "Person\\Controls\\ctrlPersonInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:17:18.354Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_Business\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\LibraryManagementSystem_Business\\Class1.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_Business\\Class1.cs",
+              "RelativeToolTip": "..\\LibraryManagementSystem_Business\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:09:31.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_DataAccess\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\LibraryManagementSystem_DataAccess\\Class1.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem_DataAccess\\Class1.cs",
+              "RelativeToolTip": "..\\LibraryManagementSystem_DataAccess\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:09:01.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "F:\\Programming_By_Mhmd\\LibraryManagementSystem\\LibraryManagementSystem\\LibraryManagementSystem\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T01:08:29.591Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
