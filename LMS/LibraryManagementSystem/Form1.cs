@@ -16,5 +16,10 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ctrlPersonInfo1.PersonID = 2;
+        }
     }
 }

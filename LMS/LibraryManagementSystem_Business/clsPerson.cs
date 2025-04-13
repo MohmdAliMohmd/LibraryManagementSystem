@@ -73,6 +73,13 @@ namespace LibraryManagementSystem_Business
         {
             return clsPersonData.IsPersonExist(PersonID);
         }
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + MiddleName + " " +  LastName;
+            }
+        }
         public static clsPerson Find(int PersonID)
         {
             string FirstName = "";
