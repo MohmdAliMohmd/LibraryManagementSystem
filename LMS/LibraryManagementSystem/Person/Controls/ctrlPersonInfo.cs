@@ -33,7 +33,7 @@ namespace LibraryManagementSystem.Person.Controls
         {
             get { return _PersonID; }
             set { _PersonID = value;
-                _Person = clsPerson.Find(_PersonID);
+                _Person = clsPerson.FindByPersonID(_PersonID);
                 if (_Person != null)
                     _LoadPersonData();
                 else
@@ -88,19 +88,7 @@ namespace LibraryManagementSystem.Person.Controls
             _LoadPersonImage();
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Filter = "Image Files(*.png)|*.png|JPG|*.jpg|JPEG|*.jpeg;|BMP|*.bmp";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
+      
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string selectedFilePath = openFileDialog1.FileName;
-                pbProfileImage.Load(selectedFilePath);
-                
-
-            }
-        }
     } 
 }

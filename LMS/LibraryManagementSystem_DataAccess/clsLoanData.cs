@@ -67,6 +67,418 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetLoanByLoanID(int  LoanID , ref int BookID, ref int MemberID, ref int LibrarianID, ref DateTime LoanDate, ref DateTime DueDate, ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE LoanID = @LoanID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LoanID", LoanID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        BookID = (int)reader["BookID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByBookID(ref int LoanID, int  BookID , ref int MemberID, ref int LibrarianID, ref DateTime LoanDate, ref DateTime DueDate, ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE BookID = @BookID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@BookID", BookID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByMemberID(ref int LoanID, ref int BookID, int  MemberID , ref int LibrarianID, ref DateTime LoanDate, ref DateTime DueDate, ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE MemberID = @MemberID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@MemberID", MemberID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        BookID = (int)reader["BookID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByLibrarianID(ref int LoanID, ref int BookID, ref int MemberID, int  LibrarianID , ref DateTime LoanDate, ref DateTime DueDate, ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE LibrarianID = @LibrarianID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LibrarianID", LibrarianID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        BookID = (int)reader["BookID"];
+                        MemberID = (int)reader["MemberID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByLoanDate(ref int LoanID, ref int BookID, ref int MemberID, ref int LibrarianID, DateTime  LoanDate , ref DateTime DueDate, ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE LoanDate = @LoanDate";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LoanDate", LoanDate);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        BookID = (int)reader["BookID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByDueDate(ref int LoanID, ref int BookID, ref int MemberID, ref int LibrarianID, ref DateTime LoanDate, DateTime  DueDate , ref DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE DueDate = @DueDate";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@DueDate", DueDate);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        BookID = (int)reader["BookID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["ReturnDate"] != DBNull.Value)
+                        ReturnDate = (DateTime)reader["ReturnDate"];
+                    else
+                        ReturnDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetLoanByReturnDate(ref int LoanID, ref int BookID, ref int MemberID, ref int LibrarianID, ref DateTime LoanDate, ref DateTime DueDate, DateTime  ReturnDate )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Loans WHERE ReturnDate = @ReturnDate";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ReturnDate", ReturnDate);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        LoanID = (int)reader["LoanID"];
+                        BookID = (int)reader["BookID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+
+                    if(reader["LoanDate"] != DBNull.Value)
+                        LoanDate = (DateTime)reader["LoanDate"];
+                    else
+                        LoanDate = DateTime.MinValue;
+
+
+                    if(reader["DueDate"] != DBNull.Value)
+                        DueDate = (DateTime)reader["DueDate"];
+                    else
+                        DueDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewLoan(int BookID, int MemberID, int LibrarianID, DateTime LoanDate, DateTime DueDate, DateTime ReturnDate)
         {
             int LoanID = -1;
@@ -194,6 +606,209 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@LoanID", LoanID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByLoanID(int LoanID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE LoanID = @LoanID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LoanID", LoanID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByBookID(int BookID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE BookID = @BookID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@BookID", BookID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByMemberID(int MemberID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE MemberID = @MemberID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@MemberID", MemberID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByLibrarianID(int LibrarianID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE LibrarianID = @LibrarianID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LibrarianID", LibrarianID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByLoanDate(DateTime LoanDate)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE LoanDate = @LoanDate";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LoanDate", LoanDate);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByDueDate(DateTime DueDate)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE DueDate = @DueDate";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@DueDate", DueDate);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsLoanExistByReturnDate(DateTime ReturnDate)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Loans WHERE ReturnDate = @ReturnDate";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ReturnDate", ReturnDate);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

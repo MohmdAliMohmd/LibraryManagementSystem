@@ -51,6 +51,276 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetFineByFineID(int  FineID , ref int MemberID, ref int LoanID, ref int LibrarianID, ref decimal FineFees, ref byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE FineID = @FineID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@FineID", FineID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        MemberID = (int)reader["MemberID"];
+                        LoanID = (int)reader["LoanID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+                        FineFees = Convert.ToDecimal(reader["FineFees"]);
+                        Status = (byte)reader["Status"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetFineByMemberID(ref int FineID, int  MemberID , ref int LoanID, ref int LibrarianID, ref decimal FineFees, ref byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE MemberID = @MemberID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@MemberID", MemberID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        FineID = (int)reader["FineID"];
+                        LoanID = (int)reader["LoanID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+                        FineFees = Convert.ToDecimal(reader["FineFees"]);
+                        Status = (byte)reader["Status"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetFineByLoanID(ref int FineID, ref int MemberID, int  LoanID , ref int LibrarianID, ref decimal FineFees, ref byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE LoanID = @LoanID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LoanID", LoanID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        FineID = (int)reader["FineID"];
+                        MemberID = (int)reader["MemberID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+                        FineFees = Convert.ToDecimal(reader["FineFees"]);
+                        Status = (byte)reader["Status"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetFineByLibrarianID(ref int FineID, ref int MemberID, ref int LoanID, int  LibrarianID , ref decimal FineFees, ref byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE LibrarianID = @LibrarianID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LibrarianID", LibrarianID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        FineID = (int)reader["FineID"];
+                        MemberID = (int)reader["MemberID"];
+                        LoanID = (int)reader["LoanID"];
+                        FineFees = Convert.ToDecimal(reader["FineFees"]);
+                        Status = (byte)reader["Status"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetFineByFineFees(ref int FineID, ref int MemberID, ref int LoanID, ref int LibrarianID, decimal  FineFees , ref byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE FineFees = @FineFees";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@FineFees", FineFees);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        FineID = (int)reader["FineID"];
+                        MemberID = (int)reader["MemberID"];
+                        LoanID = (int)reader["LoanID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+                        Status = (byte)reader["Status"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetFineByStatus(ref int FineID, ref int MemberID, ref int LoanID, ref int LibrarianID, ref decimal FineFees, byte  Status )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Fines WHERE Status = @Status";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@Status", Status);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        FineID = (int)reader["FineID"];
+                        MemberID = (int)reader["MemberID"];
+                        LoanID = (int)reader["LoanID"];
+                        LibrarianID = (int)reader["LibrarianID"];
+                        FineFees = Convert.ToDecimal(reader["FineFees"]);
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewFine(int MemberID, int LoanID, int LibrarianID, decimal FineFees, byte Status)
         {
             int FineID = -1;
@@ -163,6 +433,180 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@FineID", FineID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByFineID(int FineID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE FineID = @FineID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@FineID", FineID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByMemberID(int MemberID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE MemberID = @MemberID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@MemberID", MemberID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByLoanID(int LoanID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE LoanID = @LoanID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LoanID", LoanID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByLibrarianID(int LibrarianID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE LibrarianID = @LibrarianID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LibrarianID", LibrarianID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByFineFees(decimal FineFees)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE FineFees = @FineFees";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@FineFees", FineFees);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsFineExistByStatus(byte Status)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Fines WHERE Status = @Status";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Status", Status);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

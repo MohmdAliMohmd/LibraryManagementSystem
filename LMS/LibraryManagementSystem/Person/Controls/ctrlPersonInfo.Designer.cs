@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.cmsEditImage = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsEditPerson = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,56 +44,9 @@
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pbProfileImage = new System.Windows.Forms.PictureBox();
-            this.cmsEditImage.SuspendLayout();
-            this.cmsEditPerson.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfileImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmsEditImage
-            // 
-            this.cmsEditImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.cmsEditImage.Name = "cmsEditImage";
-            this.cmsEditImage.Size = new System.Drawing.Size(137, 48);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addToolStripMenuItem.Text = "Add Picture";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // cmsEditPerson
-            // 
-            this.cmsEditPerson.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
-            this.cmsEditPerson.Name = "cmsEditImage";
-            this.cmsEditPerson.Size = new System.Drawing.Size(136, 48);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
-            this.toolStripMenuItem1.Text = "Add Person";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
-            this.toolStripMenuItem2.Text = "Delete";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // panel1
             // 
@@ -267,7 +212,6 @@
             // 
             // pbProfileImage
             // 
-            this.pbProfileImage.ContextMenuStrip = this.cmsEditImage;
             this.pbProfileImage.Image = global::LibraryManagementSystem.Properties.Resources.UnKnown_Male;
             this.pbProfileImage.Location = new System.Drawing.Point(4, 5);
             this.pbProfileImage.Name = "pbProfileImage";
@@ -287,8 +231,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ctrlPersonInfo";
             this.Size = new System.Drawing.Size(620, 235);
-            this.cmsEditImage.ResumeLayout(false);
-            this.cmsEditPerson.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfileImage)).EndInit();
@@ -297,13 +239,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip cmsEditImage;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip cmsEditPerson;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;

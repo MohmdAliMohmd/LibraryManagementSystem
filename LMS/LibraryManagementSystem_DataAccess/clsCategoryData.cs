@@ -53,6 +53,142 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetCategoryByCategoryID(int  CategoryID , ref string CategoryName, ref int ParentCategory)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookCategories WHERE CategoryID = @CategoryID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@CategoryID", CategoryID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        CategoryName = (string)reader["CategoryName"];
+
+                    if(reader["ParentCategory"] != DBNull.Value)
+                        ParentCategory = (int)reader["ParentCategory"];
+                    else
+                        ParentCategory = -1;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetCategoryByCategoryName(ref int CategoryID, string  CategoryName , ref int ParentCategory)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookCategories WHERE CategoryName = @CategoryName";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@CategoryName", CategoryName);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        CategoryID = (int)reader["CategoryID"];
+
+                    if(reader["ParentCategory"] != DBNull.Value)
+                        ParentCategory = (int)reader["ParentCategory"];
+                    else
+                        ParentCategory = -1;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetCategoryByParentCategory(ref int CategoryID, ref string CategoryName, int  ParentCategory )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookCategories WHERE ParentCategory = @ParentCategory";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ParentCategory", ParentCategory);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        CategoryID = (int)reader["CategoryID"];
+                        CategoryName = (string)reader["CategoryName"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewCategory(string CategoryName, int ParentCategory)
         {
             int CategoryID = -1;
@@ -160,6 +296,93 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@CategoryID", CategoryID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsCategoryExistByCategoryID(int CategoryID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookCategories WHERE CategoryID = @CategoryID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@CategoryID", CategoryID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsCategoryExistByCategoryName(string CategoryName)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookCategories WHERE CategoryName = @CategoryName";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@CategoryName", CategoryName);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsCategoryExistByParentCategory(int ParentCategory)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookCategories WHERE ParentCategory = @ParentCategory";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ParentCategory", ParentCategory);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

@@ -51,11 +51,35 @@ namespace LibraryManagementSystem_Business
         {
             return clsBookData.DeleteBook(BookID);
         }
-        public static bool IsBookExist(int BookID)
+        public static bool IsBookExistByBookID(int BookID)
         {
-            return clsBookData.IsBookExist(BookID);
+            return clsBookData.IsBookExistByBookID(BookID);
         }
-        public static clsBook Find(int BookID)
+        public static bool IsBookExistByTitle(string Title)
+        {
+            return clsBookData.IsBookExistByTitle(Title);
+        }
+        public static bool IsBookExistByISBN(string ISBN)
+        {
+            return clsBookData.IsBookExistByISBN(ISBN);
+        }
+        public static bool IsBookExistBycategoryID(int categoryID)
+        {
+            return clsBookData.IsBookExistBycategoryID(categoryID);
+        }
+        public static bool IsBookExistByPublisherID(int PublisherID)
+        {
+            return clsBookData.IsBookExistByPublisherID(PublisherID);
+        }
+        public static bool IsBookExistByPublicationYear(int PublicationYear)
+        {
+            return clsBookData.IsBookExistByPublicationYear(PublicationYear);
+        }
+        public static bool IsBookExistByCopiesAvailable(int CopiesAvailable)
+        {
+            return clsBookData.IsBookExistByCopiesAvailable(CopiesAvailable);
+        }
+        public static clsBook FindByBookID(int BookID)
         {
             string Title = "";
             string ISBN = "";
@@ -64,10 +88,106 @@ namespace LibraryManagementSystem_Business
             int PublicationYear = -1;
             int CopiesAvailable = -1;
 
-            bool IsFound = clsBookData.GetBookByID(BookID, ref Title, ref ISBN, ref categoryID, ref PublisherID, ref PublicationYear, ref CopiesAvailable);
+            bool IsFound = clsBookData.GetBookByBookID(BookID , ref Title, ref ISBN, ref categoryID, ref PublisherID, ref PublicationYear, ref CopiesAvailable);
 
             if(IsFound)
-                return new clsBook(BookID, Title, ISBN, categoryID, PublisherID, PublicationYear, CopiesAvailable);
+                return new clsBook(BookID , Title, ISBN, categoryID, PublisherID, PublicationYear, CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindByTitle(string Title)
+        {
+            int BookID = -1;
+            string ISBN = "";
+            int categoryID = -1;
+            int PublisherID = -1;
+            int PublicationYear = -1;
+            int CopiesAvailable = -1;
+
+            bool IsFound = clsBookData.GetBookByTitle(ref BookID, Title , ref ISBN, ref categoryID, ref PublisherID, ref PublicationYear, ref CopiesAvailable);
+
+            if(IsFound)
+                return new clsBook(BookID, Title , ISBN, categoryID, PublisherID, PublicationYear, CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindByISBN(string ISBN)
+        {
+            int BookID = -1;
+            string Title = "";
+            int categoryID = -1;
+            int PublisherID = -1;
+            int PublicationYear = -1;
+            int CopiesAvailable = -1;
+
+            bool IsFound = clsBookData.GetBookByISBN(ref BookID, ref Title, ISBN , ref categoryID, ref PublisherID, ref PublicationYear, ref CopiesAvailable);
+
+            if(IsFound)
+                return new clsBook(BookID, Title, ISBN , categoryID, PublisherID, PublicationYear, CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindBycategoryID(int categoryID)
+        {
+            int BookID = -1;
+            string Title = "";
+            string ISBN = "";
+            int PublisherID = -1;
+            int PublicationYear = -1;
+            int CopiesAvailable = -1;
+
+            bool IsFound = clsBookData.GetBookBycategoryID(ref BookID, ref Title, ref ISBN, categoryID , ref PublisherID, ref PublicationYear, ref CopiesAvailable);
+
+            if(IsFound)
+                return new clsBook(BookID, Title, ISBN, categoryID , PublisherID, PublicationYear, CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindByPublisherID(int PublisherID)
+        {
+            int BookID = -1;
+            string Title = "";
+            string ISBN = "";
+            int categoryID = -1;
+            int PublicationYear = -1;
+            int CopiesAvailable = -1;
+
+            bool IsFound = clsBookData.GetBookByPublisherID(ref BookID, ref Title, ref ISBN, ref categoryID, PublisherID , ref PublicationYear, ref CopiesAvailable);
+
+            if(IsFound)
+                return new clsBook(BookID, Title, ISBN, categoryID, PublisherID , PublicationYear, CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindByPublicationYear(int PublicationYear)
+        {
+            int BookID = -1;
+            string Title = "";
+            string ISBN = "";
+            int categoryID = -1;
+            int PublisherID = -1;
+            int CopiesAvailable = -1;
+
+            bool IsFound = clsBookData.GetBookByPublicationYear(ref BookID, ref Title, ref ISBN, ref categoryID, ref PublisherID, PublicationYear , ref CopiesAvailable);
+
+            if(IsFound)
+                return new clsBook(BookID, Title, ISBN, categoryID, PublisherID, PublicationYear , CopiesAvailable);
+            else
+                return null;
+        }
+        public static clsBook FindByCopiesAvailable(int CopiesAvailable)
+        {
+            int BookID = -1;
+            string Title = "";
+            string ISBN = "";
+            int categoryID = -1;
+            int PublisherID = -1;
+            int PublicationYear = -1;
+
+            bool IsFound = clsBookData.GetBookByCopiesAvailable(ref BookID, ref Title, ref ISBN, ref categoryID, ref PublisherID, ref PublicationYear, CopiesAvailable );
+
+            if(IsFound)
+                return new clsBook(BookID, Title, ISBN, categoryID, PublisherID, PublicationYear, CopiesAvailable );
             else
                 return null;
         }

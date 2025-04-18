@@ -42,20 +42,71 @@ namespace LibraryManagementSystem_Business
         {
             return clsConfigData.DeleteConfig(ConfigID);
         }
-        public static bool IsConfigExist(int ConfigID)
+        public static bool IsConfigExistByConfigID(int ConfigID)
         {
-            return clsConfigData.IsConfigExist(ConfigID);
+            return clsConfigData.IsConfigExistByConfigID(ConfigID);
         }
-        public static clsConfig Find(int ConfigID)
+        public static bool IsConfigExistByConfigKey(string ConfigKey)
+        {
+            return clsConfigData.IsConfigExistByConfigKey(ConfigKey);
+        }
+        public static bool IsConfigExistByConfigValue(double ConfigValue)
+        {
+            return clsConfigData.IsConfigExistByConfigValue(ConfigValue);
+        }
+        public static bool IsConfigExistByLastUpdate(DateTime LastUpdate)
+        {
+            return clsConfigData.IsConfigExistByLastUpdate(LastUpdate);
+        }
+        public static clsConfig FindByConfigID(int ConfigID)
         {
             string ConfigKey = "";
             double ConfigValue = -1;
             DateTime LastUpdate = DateTime.MinValue;
 
-            bool IsFound = clsConfigData.GetConfigByID(ConfigID, ref ConfigKey, ref ConfigValue, ref LastUpdate);
+            bool IsFound = clsConfigData.GetConfigByConfigID(ConfigID , ref ConfigKey, ref ConfigValue, ref LastUpdate);
 
             if(IsFound)
-                return new clsConfig(ConfigID, ConfigKey, ConfigValue, LastUpdate);
+                return new clsConfig(ConfigID , ConfigKey, ConfigValue, LastUpdate);
+            else
+                return null;
+        }
+        public static clsConfig FindByConfigKey(string ConfigKey)
+        {
+            int ConfigID = -1;
+            double ConfigValue = -1;
+            DateTime LastUpdate = DateTime.MinValue;
+
+            bool IsFound = clsConfigData.GetConfigByConfigKey(ref ConfigID, ConfigKey , ref ConfigValue, ref LastUpdate);
+
+            if(IsFound)
+                return new clsConfig(ConfigID, ConfigKey , ConfigValue, LastUpdate);
+            else
+                return null;
+        }
+        public static clsConfig FindByConfigValue(double ConfigValue)
+        {
+            int ConfigID = -1;
+            string ConfigKey = "";
+            DateTime LastUpdate = DateTime.MinValue;
+
+            bool IsFound = clsConfigData.GetConfigByConfigValue(ref ConfigID, ref ConfigKey, ConfigValue , ref LastUpdate);
+
+            if(IsFound)
+                return new clsConfig(ConfigID, ConfigKey, ConfigValue , LastUpdate);
+            else
+                return null;
+        }
+        public static clsConfig FindByLastUpdate(DateTime LastUpdate)
+        {
+            int ConfigID = -1;
+            string ConfigKey = "";
+            double ConfigValue = -1;
+
+            bool IsFound = clsConfigData.GetConfigByLastUpdate(ref ConfigID, ref ConfigKey, ref ConfigValue, LastUpdate );
+
+            if(IsFound)
+                return new clsConfig(ConfigID, ConfigKey, ConfigValue, LastUpdate );
             else
                 return null;
         }

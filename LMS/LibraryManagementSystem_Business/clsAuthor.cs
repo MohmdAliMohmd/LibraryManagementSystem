@@ -39,19 +39,51 @@ namespace LibraryManagementSystem_Business
         {
             return clsAuthorData.DeleteAuthor(AuthorID);
         }
-        public static bool IsAuthorExist(int AuthorID)
+        public static bool IsAuthorExistByAuthorID(int AuthorID)
         {
-            return clsAuthorData.IsAuthorExist(AuthorID);
+            return clsAuthorData.IsAuthorExistByAuthorID(AuthorID);
         }
-        public static clsAuthor Find(int AuthorID)
+        public static bool IsAuthorExistByAuthorName(string AuthorName)
+        {
+            return clsAuthorData.IsAuthorExistByAuthorName(AuthorName);
+        }
+        public static bool IsAuthorExistByIsDeleted(bool IsDeleted)
+        {
+            return clsAuthorData.IsAuthorExistByIsDeleted(IsDeleted);
+        }
+        public static clsAuthor FindByAuthorID(int AuthorID)
         {
             string AuthorName = "";
             bool IsDeleted = false;
 
-            bool IsFound = clsAuthorData.GetAuthorByID(AuthorID, ref AuthorName, ref IsDeleted);
+            bool IsFound = clsAuthorData.GetAuthorByAuthorID(AuthorID , ref AuthorName, ref IsDeleted);
 
             if(IsFound)
-                return new clsAuthor(AuthorID, AuthorName, IsDeleted);
+                return new clsAuthor(AuthorID , AuthorName, IsDeleted);
+            else
+                return null;
+        }
+        public static clsAuthor FindByAuthorName(string AuthorName)
+        {
+            int AuthorID = -1;
+            bool IsDeleted = false;
+
+            bool IsFound = clsAuthorData.GetAuthorByAuthorName(ref AuthorID, AuthorName , ref IsDeleted);
+
+            if(IsFound)
+                return new clsAuthor(AuthorID, AuthorName , IsDeleted);
+            else
+                return null;
+        }
+        public static clsAuthor FindByIsDeleted(bool IsDeleted)
+        {
+            int AuthorID = -1;
+            string AuthorName = "";
+
+            bool IsFound = clsAuthorData.GetAuthorByIsDeleted(ref AuthorID, ref AuthorName, IsDeleted );
+
+            if(IsFound)
+                return new clsAuthor(AuthorID, AuthorName, IsDeleted );
             else
                 return null;
         }

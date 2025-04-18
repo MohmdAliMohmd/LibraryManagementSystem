@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Syncfusion.Chart.Base, Version=29.1462.33.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Chart.Windows, Version=29.1462.33.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -66,6 +69,24 @@
     <Compile Include="Person\Controls\ctrlPersonInfo.Designer.cs">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Person\frmAddEditPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmAddEditPerson.Designer.cs">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmDeletePerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmDeletePerson.Designer.cs">
+      <DependentUpon>frmDeletePerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmPeopleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmPeopleList.Designer.cs">
+      <DependentUpon>frmPeopleList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -73,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Person\Controls\ctrlPersonInfo.resx">
       <DependentUpon>ctrlPersonInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmAddEditPerson.resx">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

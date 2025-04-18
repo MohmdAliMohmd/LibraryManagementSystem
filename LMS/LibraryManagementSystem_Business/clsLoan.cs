@@ -51,11 +51,35 @@ namespace LibraryManagementSystem_Business
         {
             return clsLoanData.DeleteLoan(LoanID);
         }
-        public static bool IsLoanExist(int LoanID)
+        public static bool IsLoanExistByLoanID(int LoanID)
         {
-            return clsLoanData.IsLoanExist(LoanID);
+            return clsLoanData.IsLoanExistByLoanID(LoanID);
         }
-        public static clsLoan Find(int LoanID)
+        public static bool IsLoanExistByBookID(int BookID)
+        {
+            return clsLoanData.IsLoanExistByBookID(BookID);
+        }
+        public static bool IsLoanExistByMemberID(int MemberID)
+        {
+            return clsLoanData.IsLoanExistByMemberID(MemberID);
+        }
+        public static bool IsLoanExistByLibrarianID(int LibrarianID)
+        {
+            return clsLoanData.IsLoanExistByLibrarianID(LibrarianID);
+        }
+        public static bool IsLoanExistByLoanDate(DateTime LoanDate)
+        {
+            return clsLoanData.IsLoanExistByLoanDate(LoanDate);
+        }
+        public static bool IsLoanExistByDueDate(DateTime DueDate)
+        {
+            return clsLoanData.IsLoanExistByDueDate(DueDate);
+        }
+        public static bool IsLoanExistByReturnDate(DateTime ReturnDate)
+        {
+            return clsLoanData.IsLoanExistByReturnDate(ReturnDate);
+        }
+        public static clsLoan FindByLoanID(int LoanID)
         {
             int BookID = -1;
             int MemberID = -1;
@@ -64,10 +88,106 @@ namespace LibraryManagementSystem_Business
             DateTime DueDate = DateTime.MinValue;
             DateTime ReturnDate = DateTime.MinValue;
 
-            bool IsFound = clsLoanData.GetLoanByID(LoanID, ref BookID, ref MemberID, ref LibrarianID, ref LoanDate, ref DueDate, ref ReturnDate);
+            bool IsFound = clsLoanData.GetLoanByLoanID(LoanID , ref BookID, ref MemberID, ref LibrarianID, ref LoanDate, ref DueDate, ref ReturnDate);
 
             if(IsFound)
-                return new clsLoan(LoanID, BookID, MemberID, LibrarianID, LoanDate, DueDate, ReturnDate);
+                return new clsLoan(LoanID , BookID, MemberID, LibrarianID, LoanDate, DueDate, ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByBookID(int BookID)
+        {
+            int LoanID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime LoanDate = DateTime.MinValue;
+            DateTime DueDate = DateTime.MinValue;
+            DateTime ReturnDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByBookID(ref LoanID, BookID , ref MemberID, ref LibrarianID, ref LoanDate, ref DueDate, ref ReturnDate);
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID , MemberID, LibrarianID, LoanDate, DueDate, ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByMemberID(int MemberID)
+        {
+            int LoanID = -1;
+            int BookID = -1;
+            int LibrarianID = -1;
+            DateTime LoanDate = DateTime.MinValue;
+            DateTime DueDate = DateTime.MinValue;
+            DateTime ReturnDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByMemberID(ref LoanID, ref BookID, MemberID , ref LibrarianID, ref LoanDate, ref DueDate, ref ReturnDate);
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID, MemberID , LibrarianID, LoanDate, DueDate, ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByLibrarianID(int LibrarianID)
+        {
+            int LoanID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            DateTime LoanDate = DateTime.MinValue;
+            DateTime DueDate = DateTime.MinValue;
+            DateTime ReturnDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByLibrarianID(ref LoanID, ref BookID, ref MemberID, LibrarianID , ref LoanDate, ref DueDate, ref ReturnDate);
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID, MemberID, LibrarianID , LoanDate, DueDate, ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByLoanDate(DateTime LoanDate)
+        {
+            int LoanID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime DueDate = DateTime.MinValue;
+            DateTime ReturnDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByLoanDate(ref LoanID, ref BookID, ref MemberID, ref LibrarianID, LoanDate , ref DueDate, ref ReturnDate);
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID, MemberID, LibrarianID, LoanDate , DueDate, ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByDueDate(DateTime DueDate)
+        {
+            int LoanID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime LoanDate = DateTime.MinValue;
+            DateTime ReturnDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByDueDate(ref LoanID, ref BookID, ref MemberID, ref LibrarianID, ref LoanDate, DueDate , ref ReturnDate);
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID, MemberID, LibrarianID, LoanDate, DueDate , ReturnDate);
+            else
+                return null;
+        }
+        public static clsLoan FindByReturnDate(DateTime ReturnDate)
+        {
+            int LoanID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime LoanDate = DateTime.MinValue;
+            DateTime DueDate = DateTime.MinValue;
+
+            bool IsFound = clsLoanData.GetLoanByReturnDate(ref LoanID, ref BookID, ref MemberID, ref LibrarianID, ref LoanDate, ref DueDate, ReturnDate );
+
+            if(IsFound)
+                return new clsLoan(LoanID, BookID, MemberID, LibrarianID, LoanDate, DueDate, ReturnDate );
             else
                 return null;
         }

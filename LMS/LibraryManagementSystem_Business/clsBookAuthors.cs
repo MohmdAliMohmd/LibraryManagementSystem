@@ -39,19 +39,51 @@ namespace LibraryManagementSystem_Business
         {
             return clsBookAuthorsData.DeleteBookAuthors(BookAuthorsID);
         }
-        public static bool IsBookAuthorsExist(int BookAuthorsID)
+        public static bool IsBookAuthorsExistByBookAuthorsID(int BookAuthorsID)
         {
-            return clsBookAuthorsData.IsBookAuthorsExist(BookAuthorsID);
+            return clsBookAuthorsData.IsBookAuthorsExistByBookAuthorsID(BookAuthorsID);
         }
-        public static clsBookAuthors Find(int BookAuthorsID)
+        public static bool IsBookAuthorsExistByBookID(int BookID)
+        {
+            return clsBookAuthorsData.IsBookAuthorsExistByBookID(BookID);
+        }
+        public static bool IsBookAuthorsExistByAuthorID(int AuthorID)
+        {
+            return clsBookAuthorsData.IsBookAuthorsExistByAuthorID(AuthorID);
+        }
+        public static clsBookAuthors FindByBookAuthorsID(int BookAuthorsID)
         {
             int BookID = -1;
             int AuthorID = -1;
 
-            bool IsFound = clsBookAuthorsData.GetBookAuthorsByID(BookAuthorsID, ref BookID, ref AuthorID);
+            bool IsFound = clsBookAuthorsData.GetBookAuthorsByBookAuthorsID(BookAuthorsID , ref BookID, ref AuthorID);
 
             if(IsFound)
-                return new clsBookAuthors(BookAuthorsID, BookID, AuthorID);
+                return new clsBookAuthors(BookAuthorsID , BookID, AuthorID);
+            else
+                return null;
+        }
+        public static clsBookAuthors FindByBookID(int BookID)
+        {
+            int BookAuthorsID = -1;
+            int AuthorID = -1;
+
+            bool IsFound = clsBookAuthorsData.GetBookAuthorsByBookID(ref BookAuthorsID, BookID , ref AuthorID);
+
+            if(IsFound)
+                return new clsBookAuthors(BookAuthorsID, BookID , AuthorID);
+            else
+                return null;
+        }
+        public static clsBookAuthors FindByAuthorID(int AuthorID)
+        {
+            int BookAuthorsID = -1;
+            int BookID = -1;
+
+            bool IsFound = clsBookAuthorsData.GetBookAuthorsByAuthorID(ref BookAuthorsID, ref BookID, AuthorID );
+
+            if(IsFound)
+                return new clsBookAuthors(BookAuthorsID, BookID, AuthorID );
             else
                 return null;
         }

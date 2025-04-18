@@ -71,6 +71,376 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetPublisherByPublisherID(int  PublisherID , ref string PublisherName, ref string Address, ref string Phone, ref string Email, ref string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE PublisherID = @PublisherID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@PublisherID", PublisherID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherName = (string)reader["PublisherName"];
+
+                    if(reader["Address"] != DBNull.Value)
+                        Address = (string)reader["Address"];
+                    else
+                        Address = "";
+
+
+                    if(reader["Phone"] != DBNull.Value)
+                        Phone = (string)reader["Phone"];
+                    else
+                        Phone = "";
+
+
+                    if(reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "";
+
+
+                    if(reader["WebSite"] != DBNull.Value)
+                        WebSite = (string)reader["WebSite"];
+                    else
+                        WebSite = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetPublisherByPublisherName(ref int PublisherID, string  PublisherName , ref string Address, ref string Phone, ref string Email, ref string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE PublisherName = @PublisherName";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@PublisherName", PublisherName);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherID = (int)reader["PublisherID"];
+
+                    if(reader["Address"] != DBNull.Value)
+                        Address = (string)reader["Address"];
+                    else
+                        Address = "";
+
+
+                    if(reader["Phone"] != DBNull.Value)
+                        Phone = (string)reader["Phone"];
+                    else
+                        Phone = "";
+
+
+                    if(reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "";
+
+
+                    if(reader["WebSite"] != DBNull.Value)
+                        WebSite = (string)reader["WebSite"];
+                    else
+                        WebSite = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetPublisherByAddress(ref int PublisherID, ref string PublisherName, string  Address , ref string Phone, ref string Email, ref string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE Address = @Address";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@Address", Address);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherID = (int)reader["PublisherID"];
+                        PublisherName = (string)reader["PublisherName"];
+
+                    if(reader["Phone"] != DBNull.Value)
+                        Phone = (string)reader["Phone"];
+                    else
+                        Phone = "";
+
+
+                    if(reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "";
+
+
+                    if(reader["WebSite"] != DBNull.Value)
+                        WebSite = (string)reader["WebSite"];
+                    else
+                        WebSite = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetPublisherByPhone(ref int PublisherID, ref string PublisherName, ref string Address, string  Phone , ref string Email, ref string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE Phone = @Phone";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@Phone", Phone);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherID = (int)reader["PublisherID"];
+                        PublisherName = (string)reader["PublisherName"];
+
+                    if(reader["Address"] != DBNull.Value)
+                        Address = (string)reader["Address"];
+                    else
+                        Address = "";
+
+
+                    if(reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "";
+
+
+                    if(reader["WebSite"] != DBNull.Value)
+                        WebSite = (string)reader["WebSite"];
+                    else
+                        WebSite = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetPublisherByEmail(ref int PublisherID, ref string PublisherName, ref string Address, ref string Phone, string  Email , ref string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE Email = @Email";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@Email", Email);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherID = (int)reader["PublisherID"];
+                        PublisherName = (string)reader["PublisherName"];
+
+                    if(reader["Address"] != DBNull.Value)
+                        Address = (string)reader["Address"];
+                    else
+                        Address = "";
+
+
+                    if(reader["Phone"] != DBNull.Value)
+                        Phone = (string)reader["Phone"];
+                    else
+                        Phone = "";
+
+
+                    if(reader["WebSite"] != DBNull.Value)
+                        WebSite = (string)reader["WebSite"];
+                    else
+                        WebSite = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetPublisherByWebSite(ref int PublisherID, ref string PublisherName, ref string Address, ref string Phone, ref string Email, string  WebSite )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM PublishingHouses WHERE WebSite = @WebSite";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@WebSite", WebSite);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PublisherID = (int)reader["PublisherID"];
+                        PublisherName = (string)reader["PublisherName"];
+
+                    if(reader["Address"] != DBNull.Value)
+                        Address = (string)reader["Address"];
+                    else
+                        Address = "";
+
+
+                    if(reader["Phone"] != DBNull.Value)
+                        Phone = (string)reader["Phone"];
+                    else
+                        Phone = "";
+
+
+                    if(reader["Email"] != DBNull.Value)
+                        Email = (string)reader["Email"];
+                    else
+                        Email = "";
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewPublisher(string PublisherName, string Address, string Phone, string Email, string WebSite)
         {
             int PublisherID = -1;
@@ -199,6 +569,180 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@PublisherID", PublisherID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByPublisherID(int PublisherID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE PublisherID = @PublisherID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@PublisherID", PublisherID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByPublisherName(string PublisherName)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE PublisherName = @PublisherName";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@PublisherName", PublisherName);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByAddress(string Address)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE Address = @Address";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Address", Address);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByPhone(string Phone)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE Phone = @Phone";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Phone", Phone);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByEmail(string Email)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE Email = @Email";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Email", Email);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsPublisherExistByWebSite(string WebSite)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM PublishingHouses WHERE WebSite = @WebSite";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@WebSite", WebSite);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

@@ -48,11 +48,31 @@ namespace LibraryManagementSystem_Business
         {
             return clsFineData.DeleteFine(FineID);
         }
-        public static bool IsFineExist(int FineID)
+        public static bool IsFineExistByFineID(int FineID)
         {
-            return clsFineData.IsFineExist(FineID);
+            return clsFineData.IsFineExistByFineID(FineID);
         }
-        public static clsFine Find(int FineID)
+        public static bool IsFineExistByMemberID(int MemberID)
+        {
+            return clsFineData.IsFineExistByMemberID(MemberID);
+        }
+        public static bool IsFineExistByLoanID(int LoanID)
+        {
+            return clsFineData.IsFineExistByLoanID(LoanID);
+        }
+        public static bool IsFineExistByLibrarianID(int LibrarianID)
+        {
+            return clsFineData.IsFineExistByLibrarianID(LibrarianID);
+        }
+        public static bool IsFineExistByFineFees(decimal FineFees)
+        {
+            return clsFineData.IsFineExistByFineFees(FineFees);
+        }
+        public static bool IsFineExistByStatus(byte Status)
+        {
+            return clsFineData.IsFineExistByStatus(Status);
+        }
+        public static clsFine FindByFineID(int FineID)
         {
             int MemberID = -1;
             int LoanID = -1;
@@ -60,10 +80,85 @@ namespace LibraryManagementSystem_Business
             decimal FineFees = -1;
             byte Status = 0;
 
-            bool IsFound = clsFineData.GetFineByID(FineID, ref MemberID, ref LoanID, ref LibrarianID, ref FineFees, ref Status);
+            bool IsFound = clsFineData.GetFineByFineID(FineID , ref MemberID, ref LoanID, ref LibrarianID, ref FineFees, ref Status);
 
             if(IsFound)
-                return new clsFine(FineID, MemberID, LoanID, LibrarianID, FineFees, Status);
+                return new clsFine(FineID , MemberID, LoanID, LibrarianID, FineFees, Status);
+            else
+                return null;
+        }
+        public static clsFine FindByMemberID(int MemberID)
+        {
+            int FineID = -1;
+            int LoanID = -1;
+            int LibrarianID = -1;
+            decimal FineFees = -1;
+            byte Status = 0;
+
+            bool IsFound = clsFineData.GetFineByMemberID(ref FineID, MemberID , ref LoanID, ref LibrarianID, ref FineFees, ref Status);
+
+            if(IsFound)
+                return new clsFine(FineID, MemberID , LoanID, LibrarianID, FineFees, Status);
+            else
+                return null;
+        }
+        public static clsFine FindByLoanID(int LoanID)
+        {
+            int FineID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            decimal FineFees = -1;
+            byte Status = 0;
+
+            bool IsFound = clsFineData.GetFineByLoanID(ref FineID, ref MemberID, LoanID , ref LibrarianID, ref FineFees, ref Status);
+
+            if(IsFound)
+                return new clsFine(FineID, MemberID, LoanID , LibrarianID, FineFees, Status);
+            else
+                return null;
+        }
+        public static clsFine FindByLibrarianID(int LibrarianID)
+        {
+            int FineID = -1;
+            int MemberID = -1;
+            int LoanID = -1;
+            decimal FineFees = -1;
+            byte Status = 0;
+
+            bool IsFound = clsFineData.GetFineByLibrarianID(ref FineID, ref MemberID, ref LoanID, LibrarianID , ref FineFees, ref Status);
+
+            if(IsFound)
+                return new clsFine(FineID, MemberID, LoanID, LibrarianID , FineFees, Status);
+            else
+                return null;
+        }
+        public static clsFine FindByFineFees(decimal FineFees)
+        {
+            int FineID = -1;
+            int MemberID = -1;
+            int LoanID = -1;
+            int LibrarianID = -1;
+            byte Status = 0;
+
+            bool IsFound = clsFineData.GetFineByFineFees(ref FineID, ref MemberID, ref LoanID, ref LibrarianID, FineFees , ref Status);
+
+            if(IsFound)
+                return new clsFine(FineID, MemberID, LoanID, LibrarianID, FineFees , Status);
+            else
+                return null;
+        }
+        public static clsFine FindByStatus(byte Status)
+        {
+            int FineID = -1;
+            int MemberID = -1;
+            int LoanID = -1;
+            int LibrarianID = -1;
+            decimal FineFees = -1;
+
+            bool IsFound = clsFineData.GetFineByStatus(ref FineID, ref MemberID, ref LoanID, ref LibrarianID, ref FineFees, Status );
+
+            if(IsFound)
+                return new clsFine(FineID, MemberID, LoanID, LibrarianID, FineFees, Status );
             else
                 return null;
         }

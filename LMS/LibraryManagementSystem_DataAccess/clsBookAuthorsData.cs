@@ -48,6 +48,132 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetBookAuthorsByBookAuthorsID(int  BookAuthorsID , ref int BookID, ref int AuthorID)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookAuthors WHERE BookAuthorsID = @BookAuthorsID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@BookAuthorsID", BookAuthorsID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        BookID = (int)reader["BookID"];
+                        AuthorID = (int)reader["AuthorID"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetBookAuthorsByBookID(ref int BookAuthorsID, int  BookID , ref int AuthorID)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookAuthors WHERE BookID = @BookID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@BookID", BookID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        BookAuthorsID = (int)reader["BookAuthorsID"];
+                        AuthorID = (int)reader["AuthorID"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetBookAuthorsByAuthorID(ref int BookAuthorsID, ref int BookID, int  AuthorID )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM BookAuthors WHERE AuthorID = @AuthorID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@AuthorID", AuthorID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        BookAuthorsID = (int)reader["BookAuthorsID"];
+                        BookID = (int)reader["BookID"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewBookAuthors(int BookID, int AuthorID)
         {
             int BookAuthorsID = -1;
@@ -151,6 +277,93 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@BookAuthorsID", BookAuthorsID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsBookAuthorsExistByBookAuthorsID(int BookAuthorsID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookAuthors WHERE BookAuthorsID = @BookAuthorsID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@BookAuthorsID", BookAuthorsID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsBookAuthorsExistByBookID(int BookID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookAuthors WHERE BookID = @BookID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@BookID", BookID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsBookAuthorsExistByAuthorID(int AuthorID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM BookAuthors WHERE AuthorID = @AuthorID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@AuthorID", AuthorID);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

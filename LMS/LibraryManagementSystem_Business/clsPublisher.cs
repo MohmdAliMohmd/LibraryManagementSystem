@@ -48,11 +48,31 @@ namespace LibraryManagementSystem_Business
         {
             return clsPublisherData.DeletePublisher(PublisherID);
         }
-        public static bool IsPublisherExist(int PublisherID)
+        public static bool IsPublisherExistByPublisherID(int PublisherID)
         {
-            return clsPublisherData.IsPublisherExist(PublisherID);
+            return clsPublisherData.IsPublisherExistByPublisherID(PublisherID);
         }
-        public static clsPublisher Find(int PublisherID)
+        public static bool IsPublisherExistByPublisherName(string PublisherName)
+        {
+            return clsPublisherData.IsPublisherExistByPublisherName(PublisherName);
+        }
+        public static bool IsPublisherExistByAddress(string Address)
+        {
+            return clsPublisherData.IsPublisherExistByAddress(Address);
+        }
+        public static bool IsPublisherExistByPhone(string Phone)
+        {
+            return clsPublisherData.IsPublisherExistByPhone(Phone);
+        }
+        public static bool IsPublisherExistByEmail(string Email)
+        {
+            return clsPublisherData.IsPublisherExistByEmail(Email);
+        }
+        public static bool IsPublisherExistByWebSite(string WebSite)
+        {
+            return clsPublisherData.IsPublisherExistByWebSite(WebSite);
+        }
+        public static clsPublisher FindByPublisherID(int PublisherID)
         {
             string PublisherName = "";
             string Address = "";
@@ -60,10 +80,85 @@ namespace LibraryManagementSystem_Business
             string Email = "";
             string WebSite = "";
 
-            bool IsFound = clsPublisherData.GetPublisherByID(PublisherID, ref PublisherName, ref Address, ref Phone, ref Email, ref WebSite);
+            bool IsFound = clsPublisherData.GetPublisherByPublisherID(PublisherID , ref PublisherName, ref Address, ref Phone, ref Email, ref WebSite);
 
             if(IsFound)
-                return new clsPublisher(PublisherID, PublisherName, Address, Phone, Email, WebSite);
+                return new clsPublisher(PublisherID , PublisherName, Address, Phone, Email, WebSite);
+            else
+                return null;
+        }
+        public static clsPublisher FindByPublisherName(string PublisherName)
+        {
+            int PublisherID = -1;
+            string Address = "";
+            string Phone = "";
+            string Email = "";
+            string WebSite = "";
+
+            bool IsFound = clsPublisherData.GetPublisherByPublisherName(ref PublisherID, PublisherName , ref Address, ref Phone, ref Email, ref WebSite);
+
+            if(IsFound)
+                return new clsPublisher(PublisherID, PublisherName , Address, Phone, Email, WebSite);
+            else
+                return null;
+        }
+        public static clsPublisher FindByAddress(string Address)
+        {
+            int PublisherID = -1;
+            string PublisherName = "";
+            string Phone = "";
+            string Email = "";
+            string WebSite = "";
+
+            bool IsFound = clsPublisherData.GetPublisherByAddress(ref PublisherID, ref PublisherName, Address , ref Phone, ref Email, ref WebSite);
+
+            if(IsFound)
+                return new clsPublisher(PublisherID, PublisherName, Address , Phone, Email, WebSite);
+            else
+                return null;
+        }
+        public static clsPublisher FindByPhone(string Phone)
+        {
+            int PublisherID = -1;
+            string PublisherName = "";
+            string Address = "";
+            string Email = "";
+            string WebSite = "";
+
+            bool IsFound = clsPublisherData.GetPublisherByPhone(ref PublisherID, ref PublisherName, ref Address, Phone , ref Email, ref WebSite);
+
+            if(IsFound)
+                return new clsPublisher(PublisherID, PublisherName, Address, Phone , Email, WebSite);
+            else
+                return null;
+        }
+        public static clsPublisher FindByEmail(string Email)
+        {
+            int PublisherID = -1;
+            string PublisherName = "";
+            string Address = "";
+            string Phone = "";
+            string WebSite = "";
+
+            bool IsFound = clsPublisherData.GetPublisherByEmail(ref PublisherID, ref PublisherName, ref Address, ref Phone, Email , ref WebSite);
+
+            if(IsFound)
+                return new clsPublisher(PublisherID, PublisherName, Address, Phone, Email , WebSite);
+            else
+                return null;
+        }
+        public static clsPublisher FindByWebSite(string WebSite)
+        {
+            int PublisherID = -1;
+            string PublisherName = "";
+            string Address = "";
+            string Phone = "";
+            string Email = "";
+
+            bool IsFound = clsPublisherData.GetPublisherByWebSite(ref PublisherID, ref PublisherName, ref Address, ref Phone, ref Email, WebSite );
+
+            if(IsFound)
+                return new clsPublisher(PublisherID, PublisherName, Address, Phone, Email, WebSite );
             else
                 return null;
         }

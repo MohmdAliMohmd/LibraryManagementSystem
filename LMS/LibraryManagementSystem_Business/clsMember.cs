@@ -42,20 +42,71 @@ namespace LibraryManagementSystem_Business
         {
             return clsMemberData.DeleteMember(MemberID);
         }
-        public static bool IsMemberExist(int MemberID)
+        public static bool IsMemberExistByMemberID(int MemberID)
         {
-            return clsMemberData.IsMemberExist(MemberID);
+            return clsMemberData.IsMemberExistByMemberID(MemberID);
         }
-        public static clsMember Find(int MemberID)
+        public static bool IsMemberExistByPersonID(int PersonID)
+        {
+            return clsMemberData.IsMemberExistByPersonID(PersonID);
+        }
+        public static bool IsMemberExistByRegistrationDate(DateTime RegistrationDate)
+        {
+            return clsMemberData.IsMemberExistByRegistrationDate(RegistrationDate);
+        }
+        public static bool IsMemberExistByRegisteredBy(int RegisteredBy)
+        {
+            return clsMemberData.IsMemberExistByRegisteredBy(RegisteredBy);
+        }
+        public static clsMember FindByMemberID(int MemberID)
         {
             int PersonID = -1;
             DateTime RegistrationDate = DateTime.MinValue;
             int RegisteredBy = -1;
 
-            bool IsFound = clsMemberData.GetMemberByID(MemberID, ref PersonID, ref RegistrationDate, ref RegisteredBy);
+            bool IsFound = clsMemberData.GetMemberByMemberID(MemberID , ref PersonID, ref RegistrationDate, ref RegisteredBy);
 
             if(IsFound)
-                return new clsMember(MemberID, PersonID, RegistrationDate, RegisteredBy);
+                return new clsMember(MemberID , PersonID, RegistrationDate, RegisteredBy);
+            else
+                return null;
+        }
+        public static clsMember FindByPersonID(int PersonID)
+        {
+            int MemberID = -1;
+            DateTime RegistrationDate = DateTime.MinValue;
+            int RegisteredBy = -1;
+
+            bool IsFound = clsMemberData.GetMemberByPersonID(ref MemberID, PersonID , ref RegistrationDate, ref RegisteredBy);
+
+            if(IsFound)
+                return new clsMember(MemberID, PersonID , RegistrationDate, RegisteredBy);
+            else
+                return null;
+        }
+        public static clsMember FindByRegistrationDate(DateTime RegistrationDate)
+        {
+            int MemberID = -1;
+            int PersonID = -1;
+            int RegisteredBy = -1;
+
+            bool IsFound = clsMemberData.GetMemberByRegistrationDate(ref MemberID, ref PersonID, RegistrationDate , ref RegisteredBy);
+
+            if(IsFound)
+                return new clsMember(MemberID, PersonID, RegistrationDate , RegisteredBy);
+            else
+                return null;
+        }
+        public static clsMember FindByRegisteredBy(int RegisteredBy)
+        {
+            int MemberID = -1;
+            int PersonID = -1;
+            DateTime RegistrationDate = DateTime.MinValue;
+
+            bool IsFound = clsMemberData.GetMemberByRegisteredBy(ref MemberID, ref PersonID, ref RegistrationDate, RegisteredBy );
+
+            if(IsFound)
+                return new clsMember(MemberID, PersonID, RegistrationDate, RegisteredBy );
             else
                 return null;
         }

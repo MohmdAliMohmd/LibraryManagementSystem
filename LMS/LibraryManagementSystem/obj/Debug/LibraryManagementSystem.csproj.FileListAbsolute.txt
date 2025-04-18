@@ -29,12 +29,4 @@ F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\D
 F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\obj\Debug\LibraryM.4D120AE7.Up2Date
 F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
 F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Chart.Base.dll
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Chart.Windows.dll
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Gauge.Windows.dll
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Shared.Base.dll
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Licensing.dll
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Chart.Base.xml
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Chart.Windows.xml
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Gauge.Windows.xml
-F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\bin\Debug\Syncfusion.Shared.Base.xml
+F:\Programming_By_Mhmd\LibraryManagementSystem\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Person.frmAddEditPerson.resources

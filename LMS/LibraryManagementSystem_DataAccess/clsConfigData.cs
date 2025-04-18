@@ -54,6 +54,193 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetConfigByConfigID(int  ConfigID , ref string ConfigKey, ref double ConfigValue, ref DateTime LastUpdate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Configurations WHERE ConfigID = @ConfigID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ConfigID", ConfigID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        ConfigKey = (string)reader["ConfigKey"];
+                        ConfigValue = (double)reader["ConfigValue"];
+
+                    if(reader["LastUpdate"] != DBNull.Value)
+                        LastUpdate = (DateTime)reader["LastUpdate"];
+                    else
+                        LastUpdate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetConfigByConfigKey(ref int ConfigID, string  ConfigKey , ref double ConfigValue, ref DateTime LastUpdate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Configurations WHERE ConfigKey = @ConfigKey";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ConfigKey", ConfigKey);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        ConfigID = (int)reader["ConfigID"];
+                        ConfigValue = (double)reader["ConfigValue"];
+
+                    if(reader["LastUpdate"] != DBNull.Value)
+                        LastUpdate = (DateTime)reader["LastUpdate"];
+                    else
+                        LastUpdate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetConfigByConfigValue(ref int ConfigID, ref string ConfigKey, double  ConfigValue , ref DateTime LastUpdate)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Configurations WHERE ConfigValue = @ConfigValue";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ConfigValue", ConfigValue);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        ConfigID = (int)reader["ConfigID"];
+                        ConfigKey = (string)reader["ConfigKey"];
+
+                    if(reader["LastUpdate"] != DBNull.Value)
+                        LastUpdate = (DateTime)reader["LastUpdate"];
+                    else
+                        LastUpdate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetConfigByLastUpdate(ref int ConfigID, ref string ConfigKey, ref double ConfigValue, DateTime  LastUpdate )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Configurations WHERE LastUpdate = @LastUpdate";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@LastUpdate", LastUpdate);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        ConfigID = (int)reader["ConfigID"];
+                        ConfigKey = (string)reader["ConfigKey"];
+                        ConfigValue = (double)reader["ConfigValue"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewConfig(string ConfigKey, double ConfigValue, DateTime LastUpdate)
         {
             int ConfigID = -1;
@@ -164,6 +351,122 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@ConfigID", ConfigID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsConfigExistByConfigID(int ConfigID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Configurations WHERE ConfigID = @ConfigID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ConfigID", ConfigID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsConfigExistByConfigKey(string ConfigKey)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Configurations WHERE ConfigKey = @ConfigKey";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ConfigKey", ConfigKey);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsConfigExistByConfigValue(double ConfigValue)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Configurations WHERE ConfigValue = @ConfigValue";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@ConfigValue", ConfigValue);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsConfigExistByLastUpdate(DateTime LastUpdate)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Configurations WHERE LastUpdate = @LastUpdate";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@LastUpdate", LastUpdate);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

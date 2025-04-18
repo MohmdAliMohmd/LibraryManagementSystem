@@ -48,11 +48,31 @@ namespace LibraryManagementSystem_Business
         {
             return clsLibrarianData.DeleteLibrarian(LibrarianID);
         }
-        public static bool IsLibrarianExist(int LibrarianID)
+        public static bool IsLibrarianExistByLibrarianID(int LibrarianID)
         {
-            return clsLibrarianData.IsLibrarianExist(LibrarianID);
+            return clsLibrarianData.IsLibrarianExistByLibrarianID(LibrarianID);
         }
-        public static clsLibrarian Find(int LibrarianID)
+        public static bool IsLibrarianExistByPersonID(int PersonID)
+        {
+            return clsLibrarianData.IsLibrarianExistByPersonID(PersonID);
+        }
+        public static bool IsLibrarianExistByUserName(string UserName)
+        {
+            return clsLibrarianData.IsLibrarianExistByUserName(UserName);
+        }
+        public static bool IsLibrarianExistByPassWord(string PassWord)
+        {
+            return clsLibrarianData.IsLibrarianExistByPassWord(PassWord);
+        }
+        public static bool IsLibrarianExistBystartDate(DateTime startDate)
+        {
+            return clsLibrarianData.IsLibrarianExistBystartDate(startDate);
+        }
+        public static bool IsLibrarianExistByEndDate(DateTime EndDate)
+        {
+            return clsLibrarianData.IsLibrarianExistByEndDate(EndDate);
+        }
+        public static clsLibrarian FindByLibrarianID(int LibrarianID)
         {
             int PersonID = -1;
             string UserName = "";
@@ -60,10 +80,85 @@ namespace LibraryManagementSystem_Business
             DateTime startDate = DateTime.MinValue;
             DateTime EndDate = DateTime.MinValue;
 
-            bool IsFound = clsLibrarianData.GetLibrarianByID(LibrarianID, ref PersonID, ref UserName, ref PassWord, ref startDate, ref EndDate);
+            bool IsFound = clsLibrarianData.GetLibrarianByLibrarianID(LibrarianID , ref PersonID, ref UserName, ref PassWord, ref startDate, ref EndDate);
 
             if(IsFound)
-                return new clsLibrarian(LibrarianID, PersonID, UserName, PassWord, startDate, EndDate);
+                return new clsLibrarian(LibrarianID , PersonID, UserName, PassWord, startDate, EndDate);
+            else
+                return null;
+        }
+        public static clsLibrarian FindByPersonID(int PersonID)
+        {
+            int LibrarianID = -1;
+            string UserName = "";
+            string PassWord = "";
+            DateTime startDate = DateTime.MinValue;
+            DateTime EndDate = DateTime.MinValue;
+
+            bool IsFound = clsLibrarianData.GetLibrarianByPersonID(ref LibrarianID, PersonID , ref UserName, ref PassWord, ref startDate, ref EndDate);
+
+            if(IsFound)
+                return new clsLibrarian(LibrarianID, PersonID , UserName, PassWord, startDate, EndDate);
+            else
+                return null;
+        }
+        public static clsLibrarian FindByUserName(string UserName)
+        {
+            int LibrarianID = -1;
+            int PersonID = -1;
+            string PassWord = "";
+            DateTime startDate = DateTime.MinValue;
+            DateTime EndDate = DateTime.MinValue;
+
+            bool IsFound = clsLibrarianData.GetLibrarianByUserName(ref LibrarianID, ref PersonID, UserName , ref PassWord, ref startDate, ref EndDate);
+
+            if(IsFound)
+                return new clsLibrarian(LibrarianID, PersonID, UserName , PassWord, startDate, EndDate);
+            else
+                return null;
+        }
+        public static clsLibrarian FindByPassWord(string PassWord)
+        {
+            int LibrarianID = -1;
+            int PersonID = -1;
+            string UserName = "";
+            DateTime startDate = DateTime.MinValue;
+            DateTime EndDate = DateTime.MinValue;
+
+            bool IsFound = clsLibrarianData.GetLibrarianByPassWord(ref LibrarianID, ref PersonID, ref UserName, PassWord , ref startDate, ref EndDate);
+
+            if(IsFound)
+                return new clsLibrarian(LibrarianID, PersonID, UserName, PassWord , startDate, EndDate);
+            else
+                return null;
+        }
+        public static clsLibrarian FindBystartDate(DateTime startDate)
+        {
+            int LibrarianID = -1;
+            int PersonID = -1;
+            string UserName = "";
+            string PassWord = "";
+            DateTime EndDate = DateTime.MinValue;
+
+            bool IsFound = clsLibrarianData.GetLibrarianBystartDate(ref LibrarianID, ref PersonID, ref UserName, ref PassWord, startDate , ref EndDate);
+
+            if(IsFound)
+                return new clsLibrarian(LibrarianID, PersonID, UserName, PassWord, startDate , EndDate);
+            else
+                return null;
+        }
+        public static clsLibrarian FindByEndDate(DateTime EndDate)
+        {
+            int LibrarianID = -1;
+            int PersonID = -1;
+            string UserName = "";
+            string PassWord = "";
+            DateTime startDate = DateTime.MinValue;
+
+            bool IsFound = clsLibrarianData.GetLibrarianByEndDate(ref LibrarianID, ref PersonID, ref UserName, ref PassWord, ref startDate, EndDate );
+
+            if(IsFound)
+                return new clsLibrarian(LibrarianID, PersonID, UserName, PassWord, startDate, EndDate );
             else
                 return null;
         }

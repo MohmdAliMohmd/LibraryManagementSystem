@@ -53,6 +53,142 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetAuthorByAuthorID(int  AuthorID , ref string AuthorName, ref bool IsDeleted)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Authors WHERE AuthorID = @AuthorID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@AuthorID", AuthorID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        AuthorName = (string)reader["AuthorName"];
+
+                    if(reader["IsDeleted"] != DBNull.Value)
+                        IsDeleted = (bool)reader["IsDeleted"];
+                    else
+                        IsDeleted = false;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetAuthorByAuthorName(ref int AuthorID, string  AuthorName , ref bool IsDeleted)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Authors WHERE AuthorName = @AuthorName";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@AuthorName", AuthorName);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        AuthorID = (int)reader["AuthorID"];
+
+                    if(reader["IsDeleted"] != DBNull.Value)
+                        IsDeleted = (bool)reader["IsDeleted"];
+                    else
+                        IsDeleted = false;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetAuthorByIsDeleted(ref int AuthorID, ref string AuthorName, bool  IsDeleted )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Authors WHERE IsDeleted = @IsDeleted";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@IsDeleted", IsDeleted);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        AuthorID = (int)reader["AuthorID"];
+                        AuthorName = (string)reader["AuthorName"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewAuthor(string AuthorName, bool IsDeleted)
         {
             int AuthorID = -1;
@@ -160,6 +296,93 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@AuthorID", AuthorID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsAuthorExistByAuthorID(int AuthorID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Authors WHERE AuthorID = @AuthorID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@AuthorID", AuthorID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsAuthorExistByAuthorName(string AuthorName)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Authors WHERE AuthorName = @AuthorName";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@AuthorName", AuthorName);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsAuthorExistByIsDeleted(bool IsDeleted)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Authors WHERE IsDeleted = @IsDeleted";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@IsDeleted", IsDeleted);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

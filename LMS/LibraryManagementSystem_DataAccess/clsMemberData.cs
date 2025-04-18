@@ -54,6 +54,193 @@ namespace LibraryManagementSystem_DataAccess
 
             return isFound;
         }
+        public static bool GetMemberByMemberID(int  MemberID , ref int PersonID, ref DateTime RegistrationDate, ref int RegisteredBy)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Members WHERE MemberID = @MemberID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@MemberID", MemberID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        PersonID = (int)reader["PersonID"];
+
+                    if(reader["RegistrationDate"] != DBNull.Value)
+                        RegistrationDate = (DateTime)reader["RegistrationDate"];
+                    else
+                        RegistrationDate = DateTime.MinValue;
+
+                        RegisteredBy = (int)reader["RegisteredBy"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetMemberByPersonID(ref int MemberID, int  PersonID , ref DateTime RegistrationDate, ref int RegisteredBy)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Members WHERE PersonID = @PersonID";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        MemberID = (int)reader["MemberID"];
+
+                    if(reader["RegistrationDate"] != DBNull.Value)
+                        RegistrationDate = (DateTime)reader["RegistrationDate"];
+                    else
+                        RegistrationDate = DateTime.MinValue;
+
+                        RegisteredBy = (int)reader["RegisteredBy"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetMemberByRegistrationDate(ref int MemberID, ref int PersonID, DateTime  RegistrationDate , ref int RegisteredBy)
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Members WHERE RegistrationDate = @RegistrationDate";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@RegistrationDate", RegistrationDate);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        MemberID = (int)reader["MemberID"];
+                        PersonID = (int)reader["PersonID"];
+                        RegisteredBy = (int)reader["RegisteredBy"];
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool GetMemberByRegisteredBy(ref int MemberID, ref int PersonID, ref DateTime RegistrationDate, int  RegisteredBy )
+        {
+            bool isFound = false;
+            string query = "SELECT * FROM Members WHERE RegisteredBy = @RegisteredBy";
+            try
+            { 
+              using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                 {         
+                using(SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@RegisteredBy", RegisteredBy);        
+                    connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())      
+                          {
+        
+                        if(reader.Read())
+                        {
+                            isFound = true;
+        
+                        MemberID = (int)reader["MemberID"];
+                        PersonID = (int)reader["PersonID"];
+
+                    if(reader["RegistrationDate"] != DBNull.Value)
+                        RegistrationDate = (DateTime)reader["RegistrationDate"];
+                    else
+                        RegistrationDate = DateTime.MinValue;
+
+                         }
+                        else
+                         {
+                            isFound = false;
+                         }
+
+                  }
+                }
+              }
+            }
+            catch(Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
         public static int AddNewMember(int PersonID, DateTime RegistrationDate, int RegisteredBy)
         {
             int MemberID = -1;
@@ -164,6 +351,122 @@ namespace LibraryManagementSystem_DataAccess
                             using(SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@MemberID", MemberID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsMemberExistByMemberID(int MemberID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Members WHERE MemberID = @MemberID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@MemberID", MemberID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsMemberExistByPersonID(int PersonID)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Members WHERE PersonID = @PersonID";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@PersonID", PersonID);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsMemberExistByRegistrationDate(DateTime RegistrationDate)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Members WHERE RegistrationDate = @RegistrationDate";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@RegistrationDate", RegistrationDate);
+                                connection.Open();
+                                using(SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        isFound = reader.HasRows;
+                                    }
+                              }
+                        }
+                }
+                 catch(Exception ex)
+                {
+                  isFound = false;
+                 }
+            finally
+            {
+               
+            }
+
+            return isFound;
+        }
+        public static bool IsMemberExistByRegisteredBy(int RegisteredBy)
+        {
+            bool isFound = false;
+            string query = "SELECT Found=1 FROM Members WHERE RegisteredBy = @RegisteredBy";
+            try{
+                    using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                       {
+                            using(SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@RegisteredBy", RegisteredBy);
                                 connection.Open();
                                 using(SqlDataReader reader = command.ExecuteReader())
                                     {

@@ -48,11 +48,31 @@ namespace LibraryManagementSystem_Business
         {
             return clsReservationData.DeleteReservation(ReservationID);
         }
-        public static bool IsReservationExist(int ReservationID)
+        public static bool IsReservationExistByReservationID(int ReservationID)
         {
-            return clsReservationData.IsReservationExist(ReservationID);
+            return clsReservationData.IsReservationExistByReservationID(ReservationID);
         }
-        public static clsReservation Find(int ReservationID)
+        public static bool IsReservationExistByBookID(int BookID)
+        {
+            return clsReservationData.IsReservationExistByBookID(BookID);
+        }
+        public static bool IsReservationExistByMemberID(int MemberID)
+        {
+            return clsReservationData.IsReservationExistByMemberID(MemberID);
+        }
+        public static bool IsReservationExistByLibrarianID(int LibrarianID)
+        {
+            return clsReservationData.IsReservationExistByLibrarianID(LibrarianID);
+        }
+        public static bool IsReservationExistByReservationDate(DateTime ReservationDate)
+        {
+            return clsReservationData.IsReservationExistByReservationDate(ReservationDate);
+        }
+        public static bool IsReservationExistByStatus(byte Status)
+        {
+            return clsReservationData.IsReservationExistByStatus(Status);
+        }
+        public static clsReservation FindByReservationID(int ReservationID)
         {
             int BookID = -1;
             int MemberID = -1;
@@ -60,10 +80,85 @@ namespace LibraryManagementSystem_Business
             DateTime ReservationDate = DateTime.MinValue;
             byte Status = 0;
 
-            bool IsFound = clsReservationData.GetReservationByID(ReservationID, ref BookID, ref MemberID, ref LibrarianID, ref ReservationDate, ref Status);
+            bool IsFound = clsReservationData.GetReservationByReservationID(ReservationID , ref BookID, ref MemberID, ref LibrarianID, ref ReservationDate, ref Status);
 
             if(IsFound)
-                return new clsReservation(ReservationID, BookID, MemberID, LibrarianID, ReservationDate, Status);
+                return new clsReservation(ReservationID , BookID, MemberID, LibrarianID, ReservationDate, Status);
+            else
+                return null;
+        }
+        public static clsReservation FindByBookID(int BookID)
+        {
+            int ReservationID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime ReservationDate = DateTime.MinValue;
+            byte Status = 0;
+
+            bool IsFound = clsReservationData.GetReservationByBookID(ref ReservationID, BookID , ref MemberID, ref LibrarianID, ref ReservationDate, ref Status);
+
+            if(IsFound)
+                return new clsReservation(ReservationID, BookID , MemberID, LibrarianID, ReservationDate, Status);
+            else
+                return null;
+        }
+        public static clsReservation FindByMemberID(int MemberID)
+        {
+            int ReservationID = -1;
+            int BookID = -1;
+            int LibrarianID = -1;
+            DateTime ReservationDate = DateTime.MinValue;
+            byte Status = 0;
+
+            bool IsFound = clsReservationData.GetReservationByMemberID(ref ReservationID, ref BookID, MemberID , ref LibrarianID, ref ReservationDate, ref Status);
+
+            if(IsFound)
+                return new clsReservation(ReservationID, BookID, MemberID , LibrarianID, ReservationDate, Status);
+            else
+                return null;
+        }
+        public static clsReservation FindByLibrarianID(int LibrarianID)
+        {
+            int ReservationID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            DateTime ReservationDate = DateTime.MinValue;
+            byte Status = 0;
+
+            bool IsFound = clsReservationData.GetReservationByLibrarianID(ref ReservationID, ref BookID, ref MemberID, LibrarianID , ref ReservationDate, ref Status);
+
+            if(IsFound)
+                return new clsReservation(ReservationID, BookID, MemberID, LibrarianID , ReservationDate, Status);
+            else
+                return null;
+        }
+        public static clsReservation FindByReservationDate(DateTime ReservationDate)
+        {
+            int ReservationID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            byte Status = 0;
+
+            bool IsFound = clsReservationData.GetReservationByReservationDate(ref ReservationID, ref BookID, ref MemberID, ref LibrarianID, ReservationDate , ref Status);
+
+            if(IsFound)
+                return new clsReservation(ReservationID, BookID, MemberID, LibrarianID, ReservationDate , Status);
+            else
+                return null;
+        }
+        public static clsReservation FindByStatus(byte Status)
+        {
+            int ReservationID = -1;
+            int BookID = -1;
+            int MemberID = -1;
+            int LibrarianID = -1;
+            DateTime ReservationDate = DateTime.MinValue;
+
+            bool IsFound = clsReservationData.GetReservationByStatus(ref ReservationID, ref BookID, ref MemberID, ref LibrarianID, ref ReservationDate, Status );
+
+            if(IsFound)
+                return new clsReservation(ReservationID, BookID, MemberID, LibrarianID, ReservationDate, Status );
             else
                 return null;
         }

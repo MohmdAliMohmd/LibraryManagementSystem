@@ -39,19 +39,51 @@ namespace LibraryManagementSystem_Business
         {
             return clsCategoryData.DeleteCategory(CategoryID);
         }
-        public static bool IsCategoryExist(int CategoryID)
+        public static bool IsCategoryExistByCategoryID(int CategoryID)
         {
-            return clsCategoryData.IsCategoryExist(CategoryID);
+            return clsCategoryData.IsCategoryExistByCategoryID(CategoryID);
         }
-        public static clsCategory Find(int CategoryID)
+        public static bool IsCategoryExistByCategoryName(string CategoryName)
+        {
+            return clsCategoryData.IsCategoryExistByCategoryName(CategoryName);
+        }
+        public static bool IsCategoryExistByParentCategory(int ParentCategory)
+        {
+            return clsCategoryData.IsCategoryExistByParentCategory(ParentCategory);
+        }
+        public static clsCategory FindByCategoryID(int CategoryID)
         {
             string CategoryName = "";
             int ParentCategory = -1;
 
-            bool IsFound = clsCategoryData.GetCategoryByID(CategoryID, ref CategoryName, ref ParentCategory);
+            bool IsFound = clsCategoryData.GetCategoryByCategoryID(CategoryID , ref CategoryName, ref ParentCategory);
 
             if(IsFound)
-                return new clsCategory(CategoryID, CategoryName, ParentCategory);
+                return new clsCategory(CategoryID , CategoryName, ParentCategory);
+            else
+                return null;
+        }
+        public static clsCategory FindByCategoryName(string CategoryName)
+        {
+            int CategoryID = -1;
+            int ParentCategory = -1;
+
+            bool IsFound = clsCategoryData.GetCategoryByCategoryName(ref CategoryID, CategoryName , ref ParentCategory);
+
+            if(IsFound)
+                return new clsCategory(CategoryID, CategoryName , ParentCategory);
+            else
+                return null;
+        }
+        public static clsCategory FindByParentCategory(int ParentCategory)
+        {
+            int CategoryID = -1;
+            string CategoryName = "";
+
+            bool IsFound = clsCategoryData.GetCategoryByParentCategory(ref CategoryID, ref CategoryName, ParentCategory );
+
+            if(IsFound)
+                return new clsCategory(CategoryID, CategoryName, ParentCategory );
             else
                 return null;
         }
